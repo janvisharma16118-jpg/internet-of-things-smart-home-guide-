@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Topic | Emerging Technologies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="topbar"><a href="index.html">Back to all topics</a></nav>
+
+  <main class="detail" id="detail"></main>
+
+  <footer>Made by YOUR NAME · Emerging Technology subject</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Read ?topic=ai from the address bar and find that topic
+    const id = new URLSearchParams(window.location.search).get("topic");
+    const t = topics.find(function (x) { return x.id === id; });
+    const box = document.getElementById("detail");
+
+    if (!t) {
+      box.innerHTML = "<h1>Topic not found</h1><p>Go back and choose a topic from the list.</p>";
+    } else {
+      document.title = t.name + " | Emerging Technologies";
+      const points = t.points.map(function (p) { return "<li>" + p + "</li>"; }).join("");
+      const uses = t.uses.map(function (u) { return "<li>" + u + "</li>"; }).join("");
+      const i = topics.indexOf(t);
+      const next = topics[(i + 1) % topics.length];
+      box.innerHTML =
+        "<h1>" + t.name + "</h1>" +
+        '<p class="lead">' + t.summary + "</p>" +
+        "<h2>How it works</h2><ul>" + points + "</ul>" +
+        "<h2>Where it is used</h2><ul>" + uses + "</ul>" +
+        '<a class="next" href="topic.html?topic=' + next.id + '">Next topic: ' + next.name + "</a>";
+    }
+  </script>
+</body>
+</html>

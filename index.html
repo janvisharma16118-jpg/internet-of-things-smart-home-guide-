@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emerging Technologies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>Emerging Technologies</h1>
+           <p>Six technologies that are changing how we live and work. Pick one to read more.</p>
+  </header>
+
+  <main>
+    <ul class="topic-list" id="topicList"></ul>
+  </main>
+
+  <footer>Made by YOUR NAME · Emerging Technology subject</footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Build the list of topic links on the first page
+    const list = document.getElementById("topicList");
+    topics.forEach(function (t) {
+      list.innerHTML +=
+             '<li><a href="topic.html?topic=' + t.id + '">' +
+        '<span class="name">' + t.name + '</span>' +
+        '<span class="tag">' + t.tagline + '</span></a></li>';
+    });
+  </script>
+</body>
+</html>
